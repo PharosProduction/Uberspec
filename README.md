@@ -1,1 +1,51 @@
 # Uberspec
+
+## Protobuf conventions
+
+### Header section
+
+1. Package should consists of:
+- service goal (ex.: `api`) (lowercase)
+- service name (ex.: `users`, `comments`) (plural, snakecase, lowercase)
+- service version major.minor.patch (ex.: `v1_3_2`) (snakecase, lowercase)
+Ex.: `api.users.v1.3.2`
+
+2. Options:
+- `java_outer_classname = "ServicenameProto"` (ex.: `UsersProto`) (plural, camelcase, uppercase first)
+- `java_multiple_files = true`
+- `java_generic_services = true`
+
+### Imports section
+
+All imports should be here
+
+### RPC section
+
+1. Service name should consist of ServicenameService (ex.: `UsersService`, `CommentsService`) (plural, camelcase, upcase first)
+2. RPC should start from a verb - get, add, update, delete, custom verb (ex.: `getComments`, `addUser`, `updateUser`, `closeDeal`) (camelcase, lowercase first)
+3. Successful empty request/response should contain `Empty` message
+4. Message with a single message as a parameter should be avoided
+Ex.:
+```
+rpc getDeal(GetDealRequest) returns (GetDealResponse);
+
+message GetDealRequest {
+  Empty empty = 1;
+}
+
+message GetDealResponse {
+    Deal deal = 1;
+}
+```
+
+should be replaced with
+
+```
+rpc getDeal(Empty) returns (Deal);
+```
+
+### Messages section
+
+1. Message name should have only message topic (ex.: `User` instead of `UserMessage`) (camelcase, upcase first)
+2. Repeated paramet should always be in a plural form (ex.: `repeated User users = 1`)
+3. Parameter should be in a snake case (ex.: `UserType user_type = 1`)
