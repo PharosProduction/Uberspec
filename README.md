@@ -23,8 +23,12 @@ All imports should be here
 
 1. Service name should consist of ServicenameService (ex.: `UsersService`, `CommentsService`) (plural, camelcase, upcase first)
 2. RPC should start from a verb - get, add, update, delete, custom verb (ex.: `getComments`, `addUser`, `updateUser`, `closeDeal`) (camelcase, lowercase first)
-3. Successful empty request/response should contain `Empty` message
-4. Message with a single message as a parameter should be avoided
+3. 
+3.1. Request message should contain a word `Request` in the end (ex.: `GetUserByIdRequest`)
+3.2. Response message should contain a word `Response` (ex.: `GetUserByIdResponse`)
+3.3. Exclusion is a message that was defined as an entity (ex.: `rpc addUser(User) returns (Empty);`)
+4. Successful empty request/response should contain `Empty` message
+5. Message with a single message as a parameter should be avoided
 Ex.:
 ```
 rpc getDeal(GetDealRequest) returns (GetDealResponse);
