@@ -57,3 +57,8 @@ rpc getDeal(Empty) returns (Deal);
 1. Message name should have only message topic (ex.: `User` instead of `UserMessage`) (camelcase, upcase first)
 2. Repeated paramet should always be in a plural form (ex.: `repeated User users = 1`)
 3. Parameter should be in a snake case (ex.: `UserType user_type = 1`)
+
+### Authentication / Authorization
+
+1. JWT authentication token should be passed in a header `x-client-authorization`. Only external authorization server should access this header. Header should be removed in a front proxy.
+2. Authorized user ID should be propagated in the header `x-ext-auth-id-user` from external authorization server.
