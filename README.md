@@ -62,3 +62,6 @@ rpc getDeal(Empty) returns (Deal);
 
 1. JWT authentication token should be passed in a header `x-client-authorization`. Only external authorization server should access this header. Header should be removed in a front proxy.
 2. Authorized user ID should be propagated in the header `x-ext-auth-id-user` from external authorization server.
+
+By [Dmytro Nasyrov, Founder, CTO at Pharos Production Inc.](https://www.linkedin.com/in/dmytronasyrov/)
+And [Pharos Production Inc. - Web3, blockchain, fintech, defi software development services](https://pharosproduction.com)
